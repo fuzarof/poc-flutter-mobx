@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:poc_flutter_mobx/injection_container.dart';
 import 'package:poc_flutter_mobx/routes.dart';
 
 void main() {
+  setUpDI();
   runApp(const MyApp());
 }
 
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Pokedex',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
       ),
       routes: routes,
       initialRoute: '/',

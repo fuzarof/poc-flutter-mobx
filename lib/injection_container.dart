@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:poc_flutter_mobx/features/pokemons_list/data/repositories/pokeapi_repository.dart';
+import 'package:poc_flutter_mobx/features/pokemons_list/domain/repositories/ipokeapi_repository.dart';
+import 'package:poc_flutter_mobx/features/pokemons_list/presentation/stores/pokemons_list_store.dart';
 
 GetIt inject = GetIt.I;
 
@@ -10,14 +13,13 @@ void setUpDI() {
 }
 
 void sharedModule() {
-  // inject.registerLazySingleton<IConfigurationHelper>(() => ConfigurationHelper());
-  inject.registerLazySingleton<Dio>(() => Dio());
+  inject.registerLazySingleton<Dio>(() => Dio(BaseOptions(baseUrl: "https://pokeapi.co/api/v2/")));
 }
 
 void dataModule() {
-  // inject.registerFactory<IOnBoardingRepository>(() => OnBoardingRepository(inject.get()));
+  inject.registerFactory<IPokeApiRepository>(() => PokeApiRepository(inject.get()));
 }
 
 void presentationModule() {
-  // inject.registerLazySingleton<NicknameEmailPasswordController>(() => NicknameEmailPasswordController(inject.get(), inject.get()));
+  inject.registerLazySingleton<PokemonsListStore>(() => PokemonsListStore(inject.get()));
 }
