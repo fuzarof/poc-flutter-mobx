@@ -40,9 +40,12 @@ class _PokemonsListPageState extends State<PokemonsListPage> {
               final pokemon = _store.pokemonsList[index];
               return Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  child: Center(
-                    child: Text(pokemon.name),
+                child: InkWell(
+                  onTap: () => Navigator.of(context).pushNamed('/pokemon', arguments: {'id': index + 1}),
+                  child: Card(
+                    child: Center(
+                      child: Text(pokemon.name),
+                    ),
                   ),
                 ),
               );
