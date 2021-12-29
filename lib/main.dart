@@ -3,7 +3,7 @@ import 'package:poc_flutter_mobx/injection_container.dart';
 import 'package:poc_flutter_mobx/routes.dart';
 
 void main() {
-  setUpDI();
+  setup();
   runApp(const MyApp());
 }
 

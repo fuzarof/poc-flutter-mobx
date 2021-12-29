@@ -35,6 +35,7 @@ class _PokemonsListPageState extends State<PokemonsListPage> {
       appBar: AppBar(title: const Text("Pokedex")),
       body: Observer(builder: (_) {
         return ListView.builder(
+            key: const Key("PokemonListViewKey"),
             itemCount: _store.pokemonsList.length,
             itemBuilder: (context, index) {
               final pokemon = _store.pokemonsList[index];
