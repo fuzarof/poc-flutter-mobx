@@ -6,6 +6,8 @@ import 'package:poc_flutter_mobx/features/pokemons_list/presentation/stores/poke
 import 'package:poc_flutter_mobx/injection_container.dart';
 
 class PokemonsListPage extends StatefulWidget {
+  static const String route = "/";
+
   const PokemonsListPage({Key? key}) : super(key: key);
 
   @override

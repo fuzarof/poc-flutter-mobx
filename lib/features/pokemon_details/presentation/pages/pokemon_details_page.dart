@@ -6,7 +6,10 @@ import 'package:poc_flutter_mobx/features/pokemon_details/presentation/stores/po
 import 'package:poc_flutter_mobx/injection_container.dart';
 
 class PokemonDetailsPage extends StatefulWidget {
-  const PokemonDetailsPage({Key? key}) : super(key: key);
+  static const String route = "/pokemon";
+  final int id;
+
+  const PokemonDetailsPage({Key? key, required this.id}) : super(key: key);
 
   @override
   _PokemonDetailsPageState createState() => _PokemonDetailsPageState();
@@ -15,11 +18,11 @@ class PokemonDetailsPage extends StatefulWidget {
 class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
   final _store = inject.get<PokemonDetailsStore>();
   late List<ReactionDisposer> _reactions;
-  bool loaded = false;
 
   @override
   void initState() {
     initReactions();
+    _store.getPokemon(widget.id);
     super.initState();
   }
 
@@ -31,10 +34,6 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, dynamic> arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-
-    if (!loaded) _processWithArguments(arguments);
-
     return Observer(builder: (_) {
       return Scaffold(
         appBar: AppBar(
@@ -43,6 +42,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            key: const Key("PokemonDetailsColumnKey"),
             children: [
               _store.pokemon?.sprite != null ? Image.network(_store.pokemon!.sprite) : Container(),
               Row(
@@ -62,10 +62,6 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
         ),
       );
     });
-  }
-
-  _processWithArguments(Map<String, dynamic> arguments) {
-    _store.getPokemon(int.parse(arguments['id'].toString()));
   }
 
   initReactions() {

@@ -11,10 +11,7 @@ class TestUtils {
     setupTest();
   }
 
-  static Widget buildTestableWidget({
-    required Widget widget,
-  }) =>
-      MaterialApp(
+  static Widget buildTestableWidget({required Widget widget, dynamic arguments}) => MaterialApp(
         home: widget,
       );
 
