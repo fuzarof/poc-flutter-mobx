@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:poc_flutter_mobx/core/error/services/navigation_handler.dart';
 import 'package:poc_flutter_mobx/injection_container.dart';
-import 'package:poc_flutter_mobx/routes.dart';
 
 void main() {
-  setUpDI();
+  setup();
   runApp(const MyApp());
 }
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      routes: routes,
+      onGenerateRoute: inject.get<NavigationHandler>().appRoutes,
       initialRoute: '/',
     );
   }
