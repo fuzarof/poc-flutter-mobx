@@ -8,7 +8,7 @@ import 'package:poc_flutter_mobx/features/pokemon_details/presentation/stores/po
 import 'package:poc_flutter_mobx/injection_container.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../../utils/test_utils.dart';
+import '../../../../utils/test_utils.dart';
 
 void main() {
   setUpAll(() async {

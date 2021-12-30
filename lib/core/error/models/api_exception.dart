@@ -1,10 +1,10 @@
 class ApiException implements Exception {
+  final String message;
+  final int statusCode;
   final String? field;
-  final String? message;
-  final int? statusCode;
   final String? reason;
 
-  ApiException(this.field, this.message, this.statusCode, {this.reason});
+  ApiException({required this.message, required this.statusCode, this.field, this.reason});
 
   @override
   String toString() {

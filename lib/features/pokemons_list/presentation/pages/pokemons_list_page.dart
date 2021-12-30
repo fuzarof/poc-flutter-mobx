@@ -66,8 +66,7 @@ class _PokemonsListPageState extends State<PokemonsListPage> {
         } else if (status == FutureStatus.rejected) {
           final error = _store.requestGetPokemonsList.error;
           if (error is ApiException) {
-            showDialog(
-                context: context, builder: (context) => AlertDialog(content: Text(error.message ?? '')));
+            showDialog(context: context, builder: (context) => AlertDialog(content: Text(error.message)));
           }
         }
       }),
